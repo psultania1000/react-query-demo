@@ -8,11 +8,15 @@ const fetchSuperHeroes = () => {
 };
 
 const RQSuperHeroesPage = () => {
-  const { isLoading, data, isError, error } = useQuery(
+  const { isLoading, data, isError, error, isFetching } = useQuery(
     "super-heroes",
-    fetchSuperHeroes
+    fetchSuperHeroes,
+    {
+      cacheTime: 5000, // To cache the data for 5 seconds
+    }
   );
 
+  console.log({ isLoading, isFetching });
   if (isLoading) {
     return <h2>...Loading</h2>;
   }
