@@ -12,7 +12,10 @@ const RQSuperHeroesPage = () => {
     "super-heroes",
     fetchSuperHeroes,
     {
-      cacheTime: 5000, // To cache the data for 5 seconds
+      cacheTime: 5000, // To cache the data for 5 seconds, default is 5 min
+      staleTime: 10000, // Query will remain fresh for 10 sec instead of getting stale flag, when it is stale it will refetch new data, default is zero
+      refetchOnMount: true, // Default is  true, the query will refetch the data if it is stale
+      refetchOnWindowFocus: true, // Anytime the tab regains focus after losing it. It will refetch the data from server.
     }
   );
 
